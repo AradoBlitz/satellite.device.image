@@ -1,0 +1,16 @@
+<?xml version = "1.0"?>
+<RSML_ROOT>
+            Version=2.2.1.3
+            nHeaderSize=65536
+            nModelCode=14
+            nModelCodeBase=16
+            cModel="Meteor_M2"
+            dDateFile=22/12/2014
+            nGMT=3
+      <Drop>
+                  nCycleNumber=2374
+                  dDateCycle=22/12/2014
+                  tTimeCycle=22:16:31.0
+                  nSessionType=1
+      </Drop>
+</RSML_ROOT>
