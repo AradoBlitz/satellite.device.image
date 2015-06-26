@@ -6,6 +6,7 @@ import static java.util.Arrays.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.function.Consumer;
 
 import org.junit.After;
 import org.junit.Before;
@@ -70,32 +71,41 @@ public class ParserTest {
 		infoChannel1.setMiddlePixel(820);
 		infoChannel1.setVideoStartRec(51);
 		
-		asList(7.000000,11.000000,18.000000)
-			.forEach((specHBend)->{infoChannel1.addSpecHBend(specHBend);});
+		provide((specHBend)->{infoChannel1.addSpecHBend(specHBend);},7.000000,11.000000,18.000000);
+		provide((specLBend)->{ infoChannel1.addSpecLBend(specLBend);},5.000000,7.000000,16.000000);
+				
+		provide((yawAngle)->{infoChannel1.addYawAngle(yawAngle);}
+			,"-001:23:22.461","-001:23:22.461","-001:23:22.461");
 		
-		asList(5.000000,7.000000,16.000000)
-			.forEach((specLBend)->{ infoChannel1.addSpecLBend(specLBend); });
+		provide((pitchAngle)->{infoChannel1.addPitchAngle(pitchAngle);}
+		,"-000:02:57.562","-000:02:57.562","-000:02:57.562");
 		
-		asList("-001:23:22.461","-001:23:22.461","-001:23:22.461")
-			.forEach((yawAngle)->{infoChannel1.addYawAngle(yawAngle);});
+		provide((pitchAngle)->{infoChannel1.addRollAngle(pitchAngle);}
+		,"0002:24:50.901","0002:24:50.901","0002:24:50.901");		
 		
-		asList("-000:02:57.562","-000:02:57.562","-000:02:57.562")
-			.forEach((pitchAngle)->{infoChannel1.addPitchAngle(pitchAngle);});
+		provide((pitchAngle)->{infoChannel1.addScanAngle(pitchAngle);}
+		,"0110:31:00.250","0110:31:00.250","0110:31:00.250");
 		
-		asList("0002:24:50.901","0002:24:50.901","0002:24:50.901")
-		.forEach((pitchAngle)->{infoChannel1.addRollAngle(pitchAngle);});
-		
-		
-		asList("0110:31:00.250","0110:31:00.250","0110:31:00.250")
-		.forEach((pitchAngle)->{infoChannel1.addScanAngle(pitchAngle);});
-		
-		asList(1,1,1)
-		.forEach((pitchAngle)->{infoChannel1.addChannel(pitchAngle);});
+		provide((pitchAngle)->{infoChannel1.addChannel(pitchAngle);},1,1,1);
 				
 		RsmlRoot actual = RsmlRoot.parse(rsmlRootInfoChannel1);
 		assertEquals(infoChannel1, actual.getInfoChannel()); 
 	}
 	
+
+	private void provide(Consumer<? super Double> consumer, Double... values) {
+		asList(values).forEach(consumer);
+		
+	}
+
+	private void provide(Consumer<? super Integer> consumer, Integer... values) {
+		asList(values).forEach(consumer);
+		
+	}
+
+	private void provide(Consumer<? super String> consumer, String... values) {
+		asList(values).forEach(consumer);		
+	}
 
 	@Test
 	public void parseFromFileDrop() throws Exception {
