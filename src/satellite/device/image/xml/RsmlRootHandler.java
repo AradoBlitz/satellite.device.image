@@ -26,8 +26,8 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 	enum RsmlRootToken{
 		Version;
 
-		public void accept(String value){
-			Logger.getAnonymousLogger().info(getClass() + " [" + value + "]");
+		public void accept(RsmlRoot rsmlRoot,String value){
+			rsmlRoot.setVersion(value);
 		}
 	};
 	
@@ -37,8 +37,7 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 			 Logger.getLogger(getClass().getName()) .info("Key[" + key + "],value[" + "]");
 				switch (key) {
 				case "Version":
-					RsmlRootToken.valueOf(key).accept(value);
-					rsmlRoot.setVersion(value);
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "nHeaderSize":
 					rsmlRoot.setHeaderSize(Long.parseLong(value));
