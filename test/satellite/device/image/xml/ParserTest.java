@@ -6,6 +6,9 @@ import static java.util.Arrays.*;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.function.Consumer;
 
 import org.junit.After;
@@ -55,6 +58,20 @@ public class ParserTest {
 		sampleDropStream.close();
 		rsmlRootInfoChannel1.close();
 		rsmlRootSplitedByNestedElementSample.close();
+	}
+	
+	@Test
+	public void readingPropertiesByStringTokenizer() throws Exception {
+		
+		List<String> result = new ArrayList<String>();
+		String input = "\n"
+				+ "                  nStringWidth=1632\n"
+				+ "                  nMiddlePixel=820";
+		StringTokenizer st = new StringTokenizer(input,"\n=");
+		while(st.hasMoreTokens())
+			result.add(st.nextToken().trim());
+		assertArrayEquals(new String[]{"nStringWidth","1632"
+				,"nMiddlePixel","820"}, result.toArray());
 	}
 	
 	@Test
