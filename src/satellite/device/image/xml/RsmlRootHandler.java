@@ -23,11 +23,17 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 		return rsmlRoot;
 	}
 
-	enum RsmlRootToken{
-		Version;
+	enum RsmlRootToken implements ElementToken{
+		Version{
+			public void accept(RsmlRoot rsmlRoot,String value){
+				rsmlRoot.setVersion(value);
+			}
+		}
+		,nHeaderSize;
 
-		public void accept(RsmlRoot rsmlRoot,String value){
-			rsmlRoot.setVersion(value);
+		@Override
+		public void accept(RsmlRoot rsmlRoot, String value) {
+			rsmlRoot.setHeaderSize(Long.parseLong(value));		
 		}
 	};
 	
@@ -40,7 +46,7 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "nHeaderSize":
-					rsmlRoot.setHeaderSize(Long.parseLong(value));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);					
 					break;
 				case "nModelCode":
 					rsmlRoot.setModelCode(Integer.parseInt(value));
