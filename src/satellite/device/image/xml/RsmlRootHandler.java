@@ -23,13 +23,21 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 		return rsmlRoot;
 	}
 
+	enum RsmlRootToken{
+		Version;
+
+		public void accept(String value){
+			Logger.getAnonymousLogger().info(getClass() + " [" + value + "]");
+		}
+	};
+	
 	@Override
 	public void setProperty(String key, String value) throws Exception {
 		 {
 			 Logger.getLogger(getClass().getName()) .info("Key[" + key + "],value[" + "]");
 				switch (key) {
 				case "Version":
-				
+					RsmlRootToken.valueOf(key).accept(value);
 					rsmlRoot.setVersion(value);
 					break;
 				case "nHeaderSize":
