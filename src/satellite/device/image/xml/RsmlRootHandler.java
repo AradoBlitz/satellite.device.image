@@ -113,44 +113,7 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 	public void setProperty(String key, String value) throws Exception {
 		 {
 			 Logger.getLogger(getClass().getName()) .info("Key[" + key + "],value[" + "]");
-				switch (key) {
-				case "Version":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "nHeaderSize":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);					
-					break;
-				case "nModelCode":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);	
-					break;
-				case "nModelCodeBase":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "cModel":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "dDateFile":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "nGMT": 
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;					
-				case "cStation": 
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "cDllVersion":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "cDllExtVersion":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					break;
-				case "nCheckSum":
-					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
-					 break;
-			default:
-				break;
-			}
-			
+			 RsmlRootToken.valueOf(key).accept(rsmlRoot, value);			
 		}
 		
 	}
