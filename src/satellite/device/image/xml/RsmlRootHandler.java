@@ -29,12 +29,84 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 				rsmlRoot.setVersion(value);
 			}
 		}
-		,nHeaderSize;
+		,nHeaderSize{
 
 		@Override
-		public void accept(RsmlRoot rsmlRoot, String value) {
-			rsmlRoot.setHeaderSize(Long.parseLong(value));		
+			public void accept(RsmlRoot rsmlRoot, String value) {
+				rsmlRoot.setHeaderSize(Long.parseLong(value));		
+			}
 		}
+		,nModelCode{
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+				rsmlRoot.setModelCode(Integer.parseInt(value));		
+				}
+		}
+		,nModelCodeBase{
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					rsmlRoot.setModelCodeBase(Integer.parseInt(value));	
+				}
+		}
+		,cModel{
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					rsmlRoot.setModel(value.replaceAll("\"", ""));	
+				}
+		}
+		,dDateFile{
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					try {
+						
+						rsmlRoot.setDateFile(simpleDateFormat.parse(value));
+					} catch (ParseException e) {
+					
+						e.printStackTrace();
+					}	
+				}
+		}
+		,nGMT {
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+				rsmlRoot.setGMT(Integer.parseInt(value));	
+				}
+		}
+		,cStation { 
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					rsmlRoot.setStation(value.replaceAll("\"", ""));
+				}
+		}
+		,cDllVersion { 
+
+			@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					rsmlRoot.setDllVersion(Integer.parseInt(value.replaceAll("\"", "")));
+				}
+		}
+		,cDllExtVersion { 
+
+				@Override
+				public void accept(RsmlRoot rsmlRoot, String value) {
+					rsmlRoot.setDllExtVersion(Integer.parseInt(value.replaceAll("\"", "")));
+				}
+		}
+		,nCheckSum { 
+
+			@Override
+			public void accept(RsmlRoot rsmlRoot, String value) {
+				rsmlRoot.setCheckSum(Integer.parseInt(value));
+			}
+	};
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	};
 	
 	@Override
@@ -49,37 +121,31 @@ public class RsmlRootHandler extends AbstractElementHandler  {
 					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);					
 					break;
 				case "nModelCode":
-					rsmlRoot.setModelCode(Integer.parseInt(value));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);	
 					break;
 				case "nModelCodeBase":
-					rsmlRoot.setModelCodeBase(Integer.parseInt(value));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "cModel":
-					rsmlRoot.setModel(value.replaceAll("\"", ""));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "dDateFile":
-				try {
-					
-					rsmlRoot.setDateFile(simpleDateFormat.parse(value));
-				} catch (ParseException e) {
-				
-					e.printStackTrace();
-				}
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "nGMT": 
-					rsmlRoot.setGMT(Integer.parseInt(value));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;					
 				case "cStation": 
-					rsmlRoot.setStation(value.replaceAll("\"", ""));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "cDllVersion":
-					rsmlRoot.setDllVersion(Integer.parseInt(value.replaceAll("\"", "")));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "cDllExtVersion":
-					rsmlRoot.setDllExtVersion(Integer.parseInt(value.replaceAll("\"", "")));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					break;
 				case "nCheckSum":
-					rsmlRoot.setCheckSum(Integer.parseInt(value));
+					RsmlRootToken.valueOf(key).accept(rsmlRoot, value);
 					 break;
 			default:
 				break;
