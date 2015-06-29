@@ -10,7 +10,7 @@ import org.junit.Test;
 public class PropertyReaderTest {
 	
 	@Test
-	public void parsePropertiesInSingleLine() throws Exception {
+	public void parseFirstProperty() throws Exception {
 		
 		
 		List<String> result = new ArrayList<String>();
