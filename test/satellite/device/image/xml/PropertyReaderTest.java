@@ -17,9 +17,8 @@ public class PropertyReaderTest {
 		String input = "nStringWidth=1632nMiddlePixel=820";
 		int i = 0;
 		char type = input.charAt(i);
-		
 		i=1;
-		for(;i<12;i++)
+		for(;'='!=input.charAt(i);i++)
 		buf.append(input.charAt(i)); 
 		String name = buf.toString();
 		
