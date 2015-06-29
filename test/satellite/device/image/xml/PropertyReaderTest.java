@@ -22,6 +22,8 @@ public class PropertyReaderTest {
 			buf.append(input.charAt(i)); 
 		String name = buf.toString();
 		
+		assertEquals(12, i);
+		
 		String value = new String();
 		i = 13;
 		for(;i<17;i++)
