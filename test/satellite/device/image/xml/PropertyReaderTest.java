@@ -23,11 +23,14 @@ public class PropertyReaderTest {
 	@Test
 	public void parseLastProperty() throws Exception {
 	
-		
-		tokenizer.type = input.charAt(17);
-		tokenizer.name = input.substring(18, 29);
+		int i = 17;
+		tokenizer.type = input.charAt(i);
 		StringBuffer buf = new StringBuffer();
-		for(int i = 30;i<input.length();i++)
+		for(i++;'n'!=input.charAt(i);i++)
+			buf.append(input.charAt(i));
+		tokenizer.name = buf.toString();
+		buf = new StringBuffer();
+		for(i++;i<input.length();i++)
 			buf.append(input.charAt(i));
 		tokenizer.value = buf.toString();
 		
