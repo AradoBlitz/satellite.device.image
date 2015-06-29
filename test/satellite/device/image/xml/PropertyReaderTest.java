@@ -14,9 +14,9 @@ public class PropertyReaderTest {
 		
 		List<String> result = new ArrayList<String>();
 		String input = "nStringWidth=1632nMiddlePixel=820";
-		char type = 0;
-		String name = null;
-		String value = null;
+		char type = input.charAt(0);
+		String name = new String(input.substring(1, 12));
+		String value = new String(input.substring(13,17));
 		assertEquals('n', type );
 		assertEquals("StringWidth", name);
 		assertEquals("1632",value);
