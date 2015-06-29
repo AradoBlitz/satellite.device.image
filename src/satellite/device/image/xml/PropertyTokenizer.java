@@ -18,5 +18,17 @@ public class PropertyTokenizer {
 			buf.append(input.charAt(i));
 		value = buf.toString();
 	}
+	public void readLastProperty(String input) {
+		int i = 17;
+		type = input.charAt(i);
+		StringBuffer buf = new StringBuffer();
+		for(i++;'='!=input.charAt(i);i++)
+			buf.append(input.charAt(i));
+		name = buf.toString();
+		buf = new StringBuffer();
+		for(i++;i<input.length();i++)
+			buf.append(input.charAt(i));
+		value = buf.toString();
+	}
 
 }
