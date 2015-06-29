@@ -25,7 +25,7 @@ public class PropertyReaderTest {
 	
 		tokenizer.type = input.charAt(17);
 		tokenizer.name = input.substring(18, 29);
-		tokenizer.value = input.substring(30,33);
+		tokenizer.value = input.substring(30,input.length());
 		
 		assertEquals('n', tokenizer.type);
 		assertEquals("MiddlePixel", tokenizer.name);
