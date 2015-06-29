@@ -12,10 +12,17 @@ public class PropertyReaderTest {
 	@Test
 	public void parsePropertiesInSingleLine() throws Exception {
 		
+		StringBuffer buf = new StringBuffer();
 		List<String> result = new ArrayList<String>();
 		String input = "nStringWidth=1632nMiddlePixel=820";
-		char type = input.charAt(0);
-		String name = new String(input.substring(1, 12));
+		int i = 0;
+		char type = input.charAt(i);
+		
+		i=1;
+		for(;i<12;i++)
+		buf.append(input.charAt(i)); 
+		String name = buf.toString();
+		
 		String value = new String(input.substring(13,17));
 		assertEquals('n', type );
 		assertEquals("StringWidth", name);
