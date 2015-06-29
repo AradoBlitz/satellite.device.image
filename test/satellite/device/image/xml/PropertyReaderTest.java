@@ -15,20 +15,21 @@ public class PropertyReaderTest {
 		StringBuffer buf = new StringBuffer();
 		List<String> result = new ArrayList<String>();
 		String input = "nStringWidth=1632nMiddlePixel=820";
+		PropertyTokenizer tokenizer = new PropertyTokenizer();
 		int i = 0;
-		char type = input.charAt(i);
+		tokenizer.type = input.charAt(i);
 		for(i++;'='!=input.charAt(i);i++)
 			buf.append(input.charAt(i)); 
-		String name = buf.toString();
+		tokenizer.name = buf.toString();
 		
 		buf = new StringBuffer();		
 		for(i++;'n'!=input.charAt(i);i++)
 			buf.append(input.charAt(i));
-		String value = buf.toString();
+		tokenizer.value = buf.toString();
 		
-		assertEquals('n', type );
-		assertEquals("StringWidth", name);
-		assertEquals("1632",value);
+		assertEquals('n', tokenizer.type);
+		assertEquals("StringWidth", tokenizer.name);
+		assertEquals("1632",tokenizer.value);
 	}
 
 }
