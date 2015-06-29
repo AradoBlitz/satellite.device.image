@@ -19,10 +19,14 @@ public class PropertyReaderTest {
 		char type = input.charAt(i);
 		i=1;
 		for(;'='!=input.charAt(i);i++)
-		buf.append(input.charAt(i)); 
+			buf.append(input.charAt(i)); 
 		String name = buf.toString();
 		
-		String value = new String(input.substring(13,17));
+		String value = new String();
+		i = 13;
+		for(;i<17;i++)
+			value = value.concat(new String(new char[]{input.charAt(i)})); 
+		
 		assertEquals('n', type );
 		assertEquals("StringWidth", name);
 		assertEquals("1632",value);
