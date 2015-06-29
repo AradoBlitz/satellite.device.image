@@ -26,7 +26,7 @@ public class PropertyReaderTest {
 		
 		String value = new String();
 		i = 13;
-		for(;i<17;i++)
+		for(;'n'!=input.charAt(i);i++)
 			value = value.concat(new String(new char[]{input.charAt(i)})); 
 		
 		assertEquals('n', type );
