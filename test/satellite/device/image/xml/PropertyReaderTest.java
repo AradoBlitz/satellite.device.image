@@ -23,9 +23,13 @@ public class PropertyReaderTest {
 	@Test
 	public void parseLastProperty() throws Exception {
 	
+		
 		tokenizer.type = input.charAt(17);
 		tokenizer.name = input.substring(18, 29);
-		tokenizer.value = input.substring(30,input.length());
+		StringBuffer buf = new StringBuffer();
+		for(int i = 30;i<input.length();i++)
+			buf.append(input.charAt(i));
+		tokenizer.value = buf.toString();
 		
 		assertEquals('n', tokenizer.type);
 		assertEquals("MiddlePixel", tokenizer.name);
