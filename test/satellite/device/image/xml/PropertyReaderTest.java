@@ -17,7 +17,7 @@ public class PropertyReaderTest {
 		String input = "nStringWidth=1632nMiddlePixel=820";
 		int i = 0;
 		char type = input.charAt(i);
-		i=1;
+		i++;
 		for(;'='!=input.charAt(i);i++)
 			buf.append(input.charAt(i)); 
 		String name = buf.toString();
@@ -25,7 +25,7 @@ public class PropertyReaderTest {
 		assertEquals(12, i);
 		
 		String value = new String();
-		i = 13;
+		i++;
 		for(;'n'!=input.charAt(i);i++)
 			value = value.concat(new String(new char[]{input.charAt(i)})); 
 		
