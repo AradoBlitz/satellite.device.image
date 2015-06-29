@@ -17,17 +17,14 @@ public class PropertyReaderTest {
 		String input = "nStringWidth=1632nMiddlePixel=820";
 		int i = 0;
 		char type = input.charAt(i);
-		i++;
-		for(;'='!=input.charAt(i);i++)
+		for(i++;'='!=input.charAt(i);i++)
 			buf.append(input.charAt(i)); 
 		String name = buf.toString();
 		
-		assertEquals(12, i);
-		
-		String value = new String();
-		i++;
-		for(;'n'!=input.charAt(i);i++)
-			value = value.concat(new String(new char[]{input.charAt(i)})); 
+		buf = new StringBuffer();		
+		for(i++;'n'!=input.charAt(i);i++)
+			buf.append(input.charAt(i));
+		String value = buf.toString();
 		
 		assertEquals('n', type );
 		assertEquals("StringWidth", name);
