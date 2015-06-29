@@ -5,6 +5,8 @@ public class PropertyTokenizer {
 	public String name;
 	public char type;
 	public String value;
+	private int index;
+	
 	public void readFirstProperty(String input) {
 		StringBuffer buf = new StringBuffer();
 		int i = 0;
@@ -17,9 +19,10 @@ public class PropertyTokenizer {
 		for(i++;'n'!=input.charAt(i);i++)
 			buf.append(input.charAt(i));
 		value = buf.toString();
+		index = i;
 	}
 	public void readLastProperty(String input) {
-		int i = 17;
+		int i = index;
 		type = input.charAt(i);
 		StringBuffer buf = new StringBuffer();
 		for(i++;'='!=input.charAt(i);i++)
