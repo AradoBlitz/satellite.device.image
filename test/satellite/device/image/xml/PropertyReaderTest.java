@@ -22,7 +22,7 @@ public class PropertyReaderTest {
 	}
 
 	@Test
-	public void parseLastProperty() throws Exception {
+	public void parseAllProperties() throws Exception {
 	
 		tokenizer.readNextProperty();
 		tokenizer.readNextProperty();
