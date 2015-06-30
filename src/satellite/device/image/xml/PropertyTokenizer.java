@@ -7,7 +7,7 @@ public class PropertyTokenizer {
 	public String value;
 	private int index;
 	
-	public void readLastProperty(String input) {
+	public void readNextProperty(String input) {
 
 		type = input.charAt(index);
 		StringBuffer buf = new StringBuffer();

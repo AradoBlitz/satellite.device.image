@@ -14,7 +14,7 @@ public class PropertyReaderTest {
 			
 		
 		
-		tokenizer.readLastProperty(input);
+		tokenizer.readNextProperty(input);
 		assertEquals('n', tokenizer.type);
 		assertEquals("StringWidth", tokenizer.name);
 		assertEquals("1632",tokenizer.value);
@@ -23,8 +23,8 @@ public class PropertyReaderTest {
 	@Test
 	public void parseLastProperty() throws Exception {
 	
-		tokenizer.readLastProperty(input);
-		tokenizer.readLastProperty(input);
+		tokenizer.readNextProperty(input);
+		tokenizer.readNextProperty(input);
 		assertEquals('n', tokenizer.type);
 		assertEquals("MiddlePixel", tokenizer.name);
 		assertEquals("820", tokenizer.value);
