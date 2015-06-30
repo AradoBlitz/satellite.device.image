@@ -16,7 +16,7 @@ public class PropertyTokenizer {
 		name = buf.toString();
 		
 		buf = new StringBuffer();		
-		for(index++;'n'!=input.charAt(index);index++)
+		for(index++;index<input.length()&&'n'!=input.charAt(index);index++)
 			buf.append(input.charAt(index));
 		value = buf.toString();
 	}
@@ -29,7 +29,7 @@ public class PropertyTokenizer {
 			buf.append(input.charAt(index));
 		name = buf.toString();
 		buf = new StringBuffer();
-		for(index++;index<input.length();index++)
+		for(index++;index<input.length()&&'n'!=input.charAt(index);index++)
 			buf.append(input.charAt(index));
 		value = buf.toString();
 	}
