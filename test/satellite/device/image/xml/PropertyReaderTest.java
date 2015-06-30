@@ -7,14 +7,14 @@ import org.junit.Test;
 public class PropertyReaderTest {
 	
 	String input = "nStringWidth=1632nMiddlePixel=820";
-	PropertyTokenizer tokenizer = new PropertyTokenizer();
+	PropertyTokenizer tokenizer = new PropertyTokenizer(input);
 	
 	@Test
 	public void parseFirstProperty() throws Exception {
 			
 		
 		
-		tokenizer.readNextProperty(input);
+		tokenizer.readNextProperty();
 		assertEquals('n', tokenizer.type);
 		assertEquals("StringWidth", tokenizer.name);
 		assertEquals("1632",tokenizer.value);
@@ -23,8 +23,8 @@ public class PropertyReaderTest {
 	@Test
 	public void parseLastProperty() throws Exception {
 	
-		tokenizer.readNextProperty(input);
-		tokenizer.readNextProperty(input);
+		tokenizer.readNextProperty();
+		tokenizer.readNextProperty();
 		assertEquals('n', tokenizer.type);
 		assertEquals("MiddlePixel", tokenizer.name);
 		assertEquals("820", tokenizer.value);
