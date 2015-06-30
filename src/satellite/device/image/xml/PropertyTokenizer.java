@@ -26,8 +26,8 @@ public class PropertyTokenizer {
 	}
 
 	public boolean hasNextProperty() {
-		// TODO Auto-generated method stub
-		return true;
+		
+		return index<input.length();
 	}
 
 }

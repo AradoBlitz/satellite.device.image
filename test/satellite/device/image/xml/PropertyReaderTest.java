@@ -29,5 +29,6 @@ public class PropertyReaderTest {
 		assertEquals('n', tokenizer.type);
 		assertEquals("MiddlePixel", tokenizer.name);
 		assertEquals("820", tokenizer.value);
+		assertFalse(tokenizer.hasNextProperty());
 	}
 }
