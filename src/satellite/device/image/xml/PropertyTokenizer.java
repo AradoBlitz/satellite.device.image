@@ -9,28 +9,28 @@ public class PropertyTokenizer {
 	
 	public void readFirstProperty(String input) {
 		StringBuffer buf = new StringBuffer();
-		int i = 0;
-		type = input.charAt(i);
-		for(i++;'='!=input.charAt(i);i++)
-			buf.append(input.charAt(i)); 
+;
+		type = input.charAt(index);
+		for(index++;'='!=input.charAt(index);index++)
+			buf.append(input.charAt(index)); 
 		name = buf.toString();
 		
 		buf = new StringBuffer();		
-		for(i++;'n'!=input.charAt(i);i++)
-			buf.append(input.charAt(i));
+		for(index++;'n'!=input.charAt(index);index++)
+			buf.append(input.charAt(index));
 		value = buf.toString();
-		index = i;
 	}
+	
 	public void readLastProperty(String input) {
-		int i = index;
-		type = input.charAt(i);
+
+		type = input.charAt(index);
 		StringBuffer buf = new StringBuffer();
-		for(i++;'='!=input.charAt(i);i++)
-			buf.append(input.charAt(i));
+		for(index++;'='!=input.charAt(index);index++)
+			buf.append(input.charAt(index));
 		name = buf.toString();
 		buf = new StringBuffer();
-		for(i++;i<input.length();i++)
-			buf.append(input.charAt(i));
+		for(index++;index<input.length();index++)
+			buf.append(input.charAt(index));
 		value = buf.toString();
 	}
 
