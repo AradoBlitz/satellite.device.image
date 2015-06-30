@@ -18,6 +18,7 @@ public class PropertyReaderTest {
 		assertEquals('n', tokenizer.type);
 		assertEquals("StringWidth", tokenizer.name);
 		assertEquals("1632",tokenizer.value);
+		assertTrue(tokenizer.hasNextProperty()); 
 	}
 
 	@Test

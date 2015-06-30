@@ -25,4 +25,9 @@ public class PropertyTokenizer {
 		value = buf.toString();
 	}
 
+	public boolean hasNextProperty() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }
